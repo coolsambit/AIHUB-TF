@@ -16,7 +16,7 @@ resource "azapi_resource" "aids_foundry_dev_proj_bu1" {
   }
 
   lifecycle {
-    ignore_changes = [output, identity]
+    ignore_changes = [identity]
   }
 }
 
@@ -38,6 +38,6 @@ resource "azapi_resource" "aids_foundry_dev_proj_bu2" {
   }
 
   lifecycle {
-    ignore_changes = [output, identity]
+    ignore_changes = [identity]
   }
 }

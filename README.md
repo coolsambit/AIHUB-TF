@@ -71,7 +71,7 @@ After `terraform apply` has recreated the Foundry infrastructure, restore data p
 **Backup:**
 ```bash
 az rest --method GET \
-  --url "https://management.azure.com/subscriptions/74beb7e5-9547-4a02-a2c2-68d4b3804ebf/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/raiPolicies?api-version=2025-04-01-preview" \
+  --url "https://management.azure.com/subscriptions/&lt;subscription-id&gt;/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/raiPolicies?api-version=2025-04-01-preview" \
   --output json > scripts/guardrails/guardrails-backup.json
 ```
 
@@ -79,7 +79,7 @@ az rest --method GET \
 ```bash
 # For each guardrail in the backup JSON
 az rest --method PUT \
-  --url "https://management.azure.com/subscriptions/74beb7e5-9547-4a02-a2c2-68d4b3804ebf/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/raiPolicies/{guardrail-name}?api-version=2025-04-01-preview" \
+  --url "https://management.azure.com/subscriptions/&lt;subscription-id&gt;/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/raiPolicies/{guardrail-name}?api-version=2025-04-01-preview" \
   --body @scripts/guardrails/{guardrail-name}.json
 ```
 
@@ -113,14 +113,14 @@ Agent definitions (name, model, instructions, tools, guardrail assignment) must 
 **Backup (proj-BU1):**
 ```bash
 az rest --method GET \
-  --url "https://aids-foundry-dev.services.ai.azure.com/agents/v1.0/subscriptions/74beb7e5-9547-4a02-a2c2-68d4b3804ebf/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/projects/proj-BU1/assistants?api-version=v1" \
+  --url "https://aids-foundry-dev.services.ai.azure.com/agents/v1.0/subscriptions/&lt;subscription-id&gt;/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/projects/proj-BU1/assistants?api-version=v1" \
   --output json > scripts/agents/proj-bu1-agents-backup.json
 ```
 
 **Backup (proj-BU2):**
 ```bash
 az rest --method GET \
-  --url "https://aids-foundry-dev.services.ai.azure.com/agents/v1.0/subscriptions/74beb7e5-9547-4a02-a2c2-68d4b3804ebf/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/projects/Proj-BU2/assistants?api-version=v1" \
+  --url "https://aids-foundry-dev.services.ai.azure.com/agents/v1.0/subscriptions/&lt;subscription-id&gt;/resourceGroups/AI-100/providers/Microsoft.CognitiveServices/accounts/Aids-Foundry-Dev/projects/Proj-BU2/assistants?api-version=v1" \
   --output json > scripts/agents/proj-bu2-agents-backup.json
 ```
 
@@ -169,7 +169,7 @@ The AI Gateway (`aigatewayaids`) is in resource group `AI-102` and is referenced
 
 ## Reference
 
-- Subscription: `74beb7e5-9547-4a02-a2c2-68d4b3804ebf`
+- Subscription: `&lt;subscription-id&gt;`
 - Resource Group: `AI-100`
 - AI Foundry Portal: [ai.azure.com](https://ai.azure.com)
 - Connections are found under: **Project → Tools** in the Foundry portal

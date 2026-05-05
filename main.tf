@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.5"
+  required_version = ">= 1.7"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -21,4 +21,9 @@ provider "azapi" {}
 
 data "azurerm_resource_group" "ai_100" {
   name = var.resource_group_name
+}
+
+data "azurerm_api_management" "ai_gateway" {
+  name                = "aigatewayaids"
+  resource_group_name = "AI-102"
 }
