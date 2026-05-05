@@ -10,7 +10,6 @@ plan.txt
 
 # Terraform working directory
 .terraform/
-.terraform.lock.hcl
 
 # Sensitive variable files
 *.tfvars
