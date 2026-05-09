@@ -1,0 +1,18 @@
+# Terraform local state and plugin cache
+.terraform/
+.terraform.tfstate.lock.info
+
+# Terraform state files (never commit state to source control)
+*.tfstate
+*.tfstate.backup
+
+# Terraform variable files that may contain secrets
+terraform.tfvars
+*.auto.tfvars
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Terraform plan files (contain sensitive data)
+*.tfplan

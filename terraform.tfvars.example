@@ -1,0 +1,24 @@
+# Example variable values for the Azure AI Foundry control plane deployment.
+# Copy this file to terraform.tfvars and fill in your own values before running
+# `terraform init && terraform apply`.
+
+subscription_id     = "00000000-0000-0000-0000-000000000000"
+resource_group_name = "rg-aihub-dev"
+location            = "eastus"
+prefix              = "aihub"
+
+# Optional – leave empty to use auto-generated names derived from `prefix`.
+ai_foundry_hub_name          = ""
+ai_foundry_project_name      = ""
+storage_account_name         = ""
+key_vault_name               = ""
+application_insights_name    = ""
+log_analytics_workspace_name = ""
+container_registry_name      = ""
+ai_services_name             = ""
+
+tags = {
+  environment = "dev"
+  project     = "aihub"
+  managed_by  = "terraform"
+}
