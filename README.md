@@ -38,6 +38,46 @@ terraform apply
 
 The following resources live inside the Foundry projects and are **not managed by Terraform**. They must be backed up and restored separately.
 
+# Azure AI Foundry — Terraform Infrastructure
+
+Manages the `Aids-Foundry-Dev` AI Services account and its projects in the `AI-100` resource group.
+
+## Resources Managed by Terraform
+
+| Resource | Type |
+|---|---|
+| AIManagedIdentity | User Assigned Identity |
+| Aids-Foundry-Dev | Azure AI Services account |
+| proj-BU1 | AI Foundry Project |
+| proj-BU2 | AI Foundry Project |
+| o4-mini-1 | Model Deployment (GlobalStandard, 500k TPM) |
+| gpt-4o-1 | Model Deployment (GlobalStandard, 225k TPM) |
+| text-embedding-3-small | Model Deployment (Standard, 120k TPM) |
+| aisearch2024h299w2 | AI Search Connection (proj-BU1) |
+| aisearch2024qpuevj | AI Search Connection (proj-BU2) |
+| GitHub | MCP Tool Connection (proj-BU2) |
+| FoundryMCPServerpreview | MCP Tool Connection (proj-BU2) |
+
+## Usage
+
+```bash
+# First time setup
+terraform init
+terraform plan -out=tfplan
+terraform apply tfplan
+
+# Restore after deletion (remove imports.tf blocks first)
+terraform apply
+```
+
+> **Note:** Remove all `import {}` blocks from `imports.tf` before running `terraform apply` to restore — they are one-time import operations and will error if the resources no longer exist.
+
+---
+
+## Resources NOT Managed by Terraform (Data Plane)
+
+The following resources live inside the Foundry projects and are **not managed by Terraform**. They must be backed up and restored separately.
+
 | Resource | Project | Notes |
 |---|---|---|
 | MyStoryTeller, FoundryAgent, SearchAgent, sad-docs | proj-BU1 | Agents |
